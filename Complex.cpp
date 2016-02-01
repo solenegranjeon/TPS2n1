@@ -2,7 +2,8 @@
 // ===========================================================================
 //                                  Includes
 // ===========================================================================
-#include "Array.h"
+#include "Complex.h"
+#include <cmath>
 
 // ===========================================================================
 //                       Definition of static attributes
@@ -11,60 +12,60 @@
 // ===========================================================================
 //                                Constructors
 // ===========================================================================
-Array::Array(){
-	size = 0;
-	tab = nullptr;
+Complex::Complex(){
+	Re=0;
+	Im=0;
+	r=0;
 }
 
-Array::Array(const Array& array2){
-	this->size=array2.get_size();
-	tab = new double[size];
-	for(int i=0;i<size;i++){
-		tab[i]=array2[i];
-	}
+Complex::Complex(const Complex& c2){
+	this->Re=c2.Re;
+	this->Im=c2.Im;
+	this->r=c2.r;
 }
 
-Array::Array(int nbelem){
-	size = nbelem;
-	tab = new double[size];
-	for(int i=0;i<size;i++){
-		tab[i]=0;
-	}
+Complex::Complex(double a, double b){
+		Re=a;
+		Im=b;
+		this->set_norm();
 }
 
-Array::Array(int nbelem, double data){
-	size = nbelem;
-	tab = new double[nbelem];
-	for(int i=0;i<nbelem;i++){
-		tab[i]=data;
-	}
-}
 
 // ===========================================================================
 //                                 Destructor
 // ===========================================================================
-Array::~Array() {
-	delete[] tab;
+Complex::~Complex() {
 }
 
 // ===========================================================================
 //                               Public Methods
 // ===========================================================================
-int Array::get_size() const{
-	return size;
+double Complex::get_Re(){
+	return Re;
 }
 
-double& Array::operator[](int index){
-	return tab[index];
+double Complex::get_Im(){
+	return Im;
 }
 
-double Array::operator[](const int index) const{
-	return tab[index];
+double Complex::get_r(){
+	return r;
 }
 
-void Array::change_element(int index, double value){
-	tab[index]=value;
+void Complex::set_norm(){
+	r=sqrt(Re*Re+Im*Im);
 }
+
+void Complex::set_Re(double a){
+	Re=a;
+	this->set_norm();
+}
+
+void Complex::set_Im(double a){
+	Im=a;
+	this->set_norm();
+}
+
 
 // ===========================================================================
 //                              Protected Methods
@@ -73,18 +74,14 @@ void Array::change_element(int index, double value){
 // ===========================================================================
 //                              External Methods
 // ===========================================================================
+Complex operator+(const Complex& A,const Complex& B){
+}
 
-Array operator+(const Array& A, const Array& B){
-	
-	int len = A.get_size() + B.get_size();
-	Array result = Array(len);
-	
-	for(int i=0; i<A.get_size(); i++){
-		result[i]=A[i];
-	}
-	for(int i=A.get_size(); i<result.get_size(); i++){
-		result[i]=B[i-A.get_size()];
-	}
-	
-	return result;
+Complex operator-(const Complex& A,const Complex& B){
+}
+
+Complex operator*(const Complex& A,const Complex& B){
+}
+
+Complex operator/(const Complex& A,const Complex& B){
 }
