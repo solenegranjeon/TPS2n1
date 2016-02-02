@@ -6,6 +6,7 @@
 #include "Array.h"
 
 #include <cstdlib>
+#include <cmath>
 
 // ===========================================================================
 //                       Definition of static attributes
@@ -38,7 +39,23 @@ RandomArray::~RandomArray() {
 // ===========================================================================
 //                               Public Methods
 // ===========================================================================
+double RandomArray::mean(){
+	double sum = 0;
+	for(int i=0;i<size;i++){
+		sum += tab[i];
+	}
+	return sum/size;
+}
 
+double RandomArray::sd(){
+	double m=this->mean();
+	double sum = 0;
+	for(int i=0;i<size;i++){
+		sum += (tab[i]-m)*(tab[i]-m) ;
+	}
+	return (sqrt(sum/size));
+	
+}
 
 // ===========================================================================
 //                              Protected Methods

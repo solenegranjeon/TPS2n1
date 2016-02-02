@@ -4,6 +4,9 @@
 // ===========================================================================
 #include "Complex.h"
 #include <cmath>
+#include <iostream>
+
+using namespace std;
 
 // ===========================================================================
 //                       Definition of static attributes
@@ -30,6 +33,12 @@ Complex::Complex(double a, double b){
 		this->set_norm();
 }
 
+Complex& Complex::operator=(const Complex& c){
+	this->Re = c.Re;
+	this->Im = c.Im;
+	this->r = c.r;
+}
+
 
 // ===========================================================================
 //                                 Destructor
@@ -40,17 +49,6 @@ Complex::~Complex() {
 // ===========================================================================
 //                               Public Methods
 // ===========================================================================
-double Complex::get_Re(){
-	return Re;
-}
-
-double Complex::get_Im(){
-	return Im;
-}
-
-double Complex::get_r(){
-	return r;
-}
 
 void Complex::set_norm(){
 	r=sqrt(Re*Re+Im*Im);
@@ -66,6 +64,10 @@ void Complex::set_Im(double a){
 	this->set_norm();
 }
 
+void Complex::display(){
+	cout << this->get_Re() << "+ " << this->get_Im() << "i" << endl;
+}
+
 
 // ===========================================================================
 //                              Protected Methods
@@ -75,11 +77,6 @@ void Complex::set_Im(double a){
 //                              External Methods
 // ===========================================================================
 Complex operator+(const Complex& A,const Complex& B){
-	//~ re=A.get_Re()+B.get_Re();
-	//~ im=A.get_Im()+B.get_Im();
-	//~ Complex result = Complex(re,im);
-		//~ 
-	//~ return result;
 }
 
 Complex operator-(const Complex& A,const Complex& B){

@@ -14,6 +14,7 @@ class Complex {
   Complex();
   Complex(const Complex&);
   Complex(double, double);
+  Complex& operator=(const Complex&);
   
 
   // =========================================================================
@@ -24,20 +25,30 @@ class Complex {
   // =========================================================================
   //                                  Getters
   // =========================================================================
-
+	inline double get_Re() const;
+	inline double get_Im() const;
+	inline double get_r() const;
 
   // =========================================================================
   //                                  Setters
   // =========================================================================
+  void set_norm();
+	void set_Re(double);
+	void set_Im(double);
+  
   // =========================================================================
   //                                 Operators
   // =========================================================================
-
+	friend Complex operator+(const Complex& A,const Complex& B);
+	friend Complex operator-(const Complex& A,const Complex& B);
+	friend Complex operator*(const Complex& A,const Complex& B);
+	friend Complex operator/(const Complex& A,const Complex& B);
 
   // =========================================================================
   //                              Public Methods
   // =========================================================================
 
+	void display();
 
 	protected :
   // =========================================================================
@@ -50,34 +61,38 @@ class Complex {
 	double Re;
 	double Im;
 	double r;
-
-// ===========================================================================
-//                            Getters' definitions
-// ===========================================================================
-	double get_Re();
-	double get_Im();
-	double get_r();
+	
+};
 
 // ===========================================================================
 //                            Setters' definitions
 // ===========================================================================
-	void set_norm();
-	
-	void set_Re(double);
-	void set_Im(double);
+
+
+// ===========================================================================
+//                            Getters' definitions
+// ===========================================================================
+inline double Complex::get_Re() const {
+	return Re;
+}
+
+inline double Complex::get_Im() const{
+	return Im;
+}
+
+inline double Complex::get_r() const{
+	return r;
+}
 
 // ===========================================================================
 //                           Operators' definitions
 // ===========================================================================
-	friend Complex operator+(const Complex& A,const Complex& B);
-	friend Complex operator-(const Complex& A,const Complex& B);
-	friend Complex operator*(const Complex& A,const Complex& B);
-	friend Complex operator/(const Complex& A,const Complex& B);
+
+
 // ===========================================================================
 //                        Inline functions' definition
 // ===========================================================================
 
-};
 
 #endif
 

@@ -13,6 +13,7 @@
 
 #include "Array.h"
 #include "RandomArray.h"
+#include "Complex.h"
 
 using namespace std;
 
@@ -47,6 +48,15 @@ int main(int argc,char* argv[]){
 	
 	RandomArray ra = RandomArray(10,1,15);
 	cout << "1st value in ra " << ra[0] << endl;
+	cout << "mean value of ra " << ra.mean() << endl;
+	cout << "sd value of ra " << ra.sd() << endl;
+	
+	Complex c1 = Complex(1,1);
+	c1.display();
+	Complex c2 = Complex();
+	c2.display();
+	c2 = c1;
+	c2.display();
 	
 	return 0;
 }
