@@ -12,6 +12,7 @@
 #include <list>
 
 #include "Array.h"
+#include "RandomArray.h"
 
 using namespace std;
 
@@ -43,6 +44,9 @@ int main(int argc,char* argv[]){
 	cout << "1st value in test3 " << test3[0] << endl;
 
 	Array sum = test2 + test3;
+	
+	RandomArray ra = RandomArray(10,1,15);
+	cout << "1st value in ra " << ra[0] << endl;
 	
 	return 0;
 }
