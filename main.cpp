@@ -51,12 +51,17 @@ int main(int argc,char* argv[]){
 	cout << "mean value of ra " << ra.mean() << endl;
 	cout << "sd value of ra " << ra.sd() << endl;
 	
-	Complex c1 = Complex(1,1);
-	c1.display();
-	Complex c2 = Complex();
-	c2.display();
-	c2 = c1;
-	c2.display();
+	Complex c = Complex(0,2);
+	c.display();
+	
+	Complex u0 = Complex();
+	u0.display();
+	
+	Complex u1 = u0*u0 + c;
+	u1.display();
+	
+	
+	Mandelbrot(u0,c);
 	
 	return 0;
 }

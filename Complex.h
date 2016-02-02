@@ -43,6 +43,9 @@ class Complex {
 	friend Complex operator-(const Complex& A,const Complex& B);
 	friend Complex operator*(const Complex& A,const Complex& B);
 	friend Complex operator/(const Complex& A,const Complex& B);
+	
+	friend Complex Fractale(const Complex&, const Complex&);
+	friend void Mandelbrot(const Complex& Uinit, const Complex& c);
 
   // =========================================================================
   //                              Public Methods

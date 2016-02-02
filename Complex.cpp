@@ -5,6 +5,10 @@
 #include "Complex.h"
 #include <cmath>
 #include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -77,13 +81,49 @@ void Complex::display(){
 //                              External Methods
 // ===========================================================================
 Complex operator+(const Complex& A,const Complex& B){
+	double a = A.get_Re() + B.get_Re();
+	double b = A.get_Im() + B.get_Im();
+	Complex result = Complex(a,b);
+	return result;
 }
 
 Complex operator-(const Complex& A,const Complex& B){
+	double a = A.get_Re() - B.get_Re();
+	double b = A.get_Im() - B.get_Im();
+	Complex result = Complex(a,b);
+	return result;
 }
 
 Complex operator*(const Complex& A,const Complex& B){
+	double a = A.get_Re()*B.get_Re() - A.get_Im()*B.get_Im() ;
+	double b = A.get_Re()*B.get_Im() + A.get_Im()*B.get_Re();
+	Complex result = Complex(a,b);
+	return result;
 }
 
 Complex operator/(const Complex& A,const Complex& B){
+	Complex newB = Complex(B.get_Re(),-B.get_Im());
+	Complex result = A*newB;
+	double c = B.get_Re()*B.get_Re() + B.get_Im()*B.get_Im();
+	result.Re/=c;
+	result.Im/=c;
+	return result;
+}
+
+Complex Fractale(const Complex& Uprev, const Complex& c){
+	Complex Unext= (Uprev * Uprev) + c; 
+	return Unext;
+}
+
+void Mandelbrot(const Complex& Uinit, const Complex& c){
+	Complex Unext = Uinit;
+	ofstream monFlux("data.txt");
+  monFlux << Uinit.get_Re() << " " <<Uinit.get_Im() << " " << Uinit.get_r() << endl;
+	for(int i = 1; i<200 ; i++){
+		Unext = Fractale(Unext,c);
+		monFlux << Unext.get_Re() << " " <<Unext.get_Im() << " " << Unext.get_r() << endl;
+		if(Unext.get_r()>4){
+			return;
+		}
+	}
 }
