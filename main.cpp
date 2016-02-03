@@ -60,8 +60,15 @@ int main(int argc,char* argv[]){
 	Complex u1 = u0*u0 + c;
 	u1.display();
 	
+	Complex tab[1000];
+	for(int i=0; i<250; i++){
+		tab[i]=Complex(-2+i*0.016,2);
+		tab[i+250]=Complex(-2+i*0.016,-2);
+		tab[i+500]=Complex(2,-2+0.016*i);
+		tab[i+750]=Complex(-2,-2+0.016*i);
+	}
 	
-	Mandelbrot(u0,c);
+	Mandelbrot(u0,tab);
 	
 	return 0;
 }

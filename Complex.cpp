@@ -115,15 +115,17 @@ Complex Fractale(const Complex& Uprev, const Complex& c){
 	return Unext;
 }
 
-void Mandelbrot(const Complex& Uinit, const Complex& c){
-	Complex Unext = Uinit;
+void Mandelbrot(const Complex& Uinit, Complex* c){
+	Complex Unext;
 	ofstream monFlux("data.txt");
   monFlux << Uinit.get_Re() << " " <<Uinit.get_Im() << " " << Uinit.get_r() << endl;
-	for(int i = 1; i<200 ; i++){
-		Unext = Fractale(Unext,c);
-		monFlux << Unext.get_Re() << " " <<Unext.get_Im() << " " << Unext.get_r() << endl;
-		if(Unext.get_r()>4){
-			return;
+	for(int index=0; index <sizeof(c) ; index++){
+		Unext = Uinit;
+		int iter = 0;
+		while(Unext.get_r()<4 && iter<200){
+			Unext = Fractale(Unext,c[index]);
+			monFlux << Unext.get_Re() << " " <<Unext.get_Im() << " " << Unext.get_r() << endl;
+			iter++;
 		}
 	}
 }
