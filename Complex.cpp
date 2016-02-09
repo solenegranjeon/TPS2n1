@@ -3,14 +3,7 @@
 //                                  Includes
 // ===========================================================================
 #include "Complex.h"
-#include <cmath>
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <fstream>
-#include <string>
 
-using namespace std;
 
 // ===========================================================================
 //                       Definition of static attributes

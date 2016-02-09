@@ -1,11 +1,12 @@
 
-#ifndef COMPLEX_H__
-#define COMPLEX_H__
+#ifndef RANDOMWALK_H__
+#define RANDOMWALK_H__
 
 // ===========================================================================
 //                                  Includes
 // ===========================================================================
 
+#include "Array.h"
 #include <cmath>
 #include <iostream>
 #include <cstdio>
@@ -15,52 +16,38 @@
 
 using namespace std;
 
-class Complex {
+class RandomWalk : public Array {
  public :
   // =========================================================================
   //                               Constructors
   // =========================================================================
-  Complex();
-  Complex(const Complex&);
-  Complex(double, double);
-  Complex& operator=(const Complex&);
+  RandomWalk();
+  RandomWalk(const RandomWalk&);
   
 
   // =========================================================================
   //                                Destructor
   // =========================================================================
-  virtual ~Complex();
+  virtual ~RandomWalk();
 
   // =========================================================================
   //                                  Getters
   // =========================================================================
-	inline double get_Re() const;
-	inline double get_Im() const;
-	inline double get_r() const;
 
   // =========================================================================
   //                                  Setters
   // =========================================================================
-  void set_norm();
-	void set_Re(double);
-	void set_Im(double);
   
   // =========================================================================
   //                                 Operators
   // =========================================================================
-	friend Complex operator+(const Complex& A,const Complex& B);
-	friend Complex operator-(const Complex& A,const Complex& B);
-	friend Complex operator*(const Complex& A,const Complex& B);
-	friend Complex operator/(const Complex& A,const Complex& B);
-	
-	friend Complex Fractale(const Complex&, const Complex&);
-	friend void Mandelbrot(const Complex& Uinit, Complex* c);
+
 
   // =========================================================================
   //                              Public Methods
   // =========================================================================
 
-	void display();
+
 
 	protected :
   // =========================================================================
@@ -70,42 +57,27 @@ class Complex {
   // =========================================================================
   //                                Attributes
   // =========================================================================
-	double Re;
-	double Im;
-	double r;
-	
-};
+
+// ===========================================================================
+//                            Getters' definitions
+// ===========================================================================
+
 
 // ===========================================================================
 //                            Setters' definitions
 // ===========================================================================
 
-
-// ===========================================================================
-//                            Getters' definitions
-// ===========================================================================
-inline double Complex::get_Re() const {
-	return Re;
-}
-
-inline double Complex::get_Im() const{
-	return Im;
-}
-
-inline double Complex::get_r() const{
-	return r;
-}
-
 // ===========================================================================
 //                           Operators' definitions
 // ===========================================================================
-
 
 // ===========================================================================
 //                        Inline functions' definition
 // ===========================================================================
 
+};
 
 #endif
+
 
 
