@@ -55,6 +55,7 @@ class Complex {
 	
 	friend Complex Fractale(const Complex&, const Complex&);
 	friend void Mandelbrot(const Complex& Uinit, Complex* c);
+	friend double Evaluate(Complex, Complex, int);
 
   // =========================================================================
   //                              Public Methods

@@ -108,6 +108,15 @@ Complex Fractale(const Complex& Uprev, const Complex& c){
 	return Unext;
 }
 
+double Evaluate( Complex U0, Complex c, int iterations ){
+  Complex Un = U0;
+  for (int i = 0; i < iterations; i++){
+    Un = Un * Un + c;
+  }
+  Un.set_norm();
+  return Un.get_r();
+}
+
 void Mandelbrot(const Complex& Uinit, Complex* c){
 	Complex Unext;
 	ofstream monFlux("data.txt");
